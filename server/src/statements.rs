@@ -3,7 +3,7 @@ pub fn state_create_table() -> String {
      CREATE TABLE IF NOT EXISTS bin (
      id TEXT PRIMARY KEY,
      body TEXT,
-     timestamp DATETIME
+     timestamp NUMBER
      )
     "
     .to_owned()
@@ -16,7 +16,7 @@ pub fn state_upload(ulid: &str, body: &str) -> String {
          VALUES (
              '{}',
              '{}',
-             datetime('now', 'localtime')
+             datetime('%s', 'now')
          );
         ",
         ulid, body
